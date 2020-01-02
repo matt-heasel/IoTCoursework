@@ -2,11 +2,16 @@ package deviceScanner;
 
 import java.util.ArrayList;
 
-public class DeviceDetails {
+import java.io.Serializable;
+
+public class DeviceDetails implements Serializable	 {
+	
+	   //default serialVersion id
+    private static final long serialVersionUID = 1L;
+    
 	private String hostName, hostAddr, FQDN;
 	private boolean wildCard, linkLocal, loopBack, siteLocal, multiCast, mcGlobal, mcLinkLocal, mcNodeLocal,
 			mcSiteLocal;
-	private ArrayList<DeviceDetails> deviceList = new ArrayList<DeviceDetails>();
 
 	public DeviceDetails(String hostName, String hostAddr, String fQDN, boolean wildCard, boolean linkLocal,
 			boolean loopBack, boolean siteLocal, boolean multiCast, boolean mcGlobal, boolean mcLinkLocal,
@@ -24,7 +29,6 @@ public class DeviceDetails {
 		this.mcLinkLocal = mcLinkLocal;
 		this.mcNodeLocal = mcNodeLocal;
 		this.mcSiteLocal = mcSiteLocal;
-		this.deviceList = deviceList;
 	}
 
 	public DeviceDetails(String hostName, String hostAddr) {
@@ -33,10 +37,6 @@ public class DeviceDetails {
 		this.hostAddr = hostAddr;
 	}
 
-	public void addToDeviceList(DeviceDetails device) {
-		deviceList.add(device);
-		System.out.println("Devices: " + deviceList.toString());
-	}
 
 	public String getHostName() {
 		return hostName;
@@ -136,7 +136,22 @@ public class DeviceDetails {
 
 	@Override
 	public String toString() {
-		return "DeviceDetails [hostName=" + hostName + ", hostAddr=" + hostAddr + "]";
+		return "DeviceDetails:\nhostName: " + hostName + "\n hostAddr: " + hostAddr + "\n FQDN: " + FQDN + "\n wildCard: "
+				+ wildCard + "\n linkLocal: " + linkLocal + "\n loopBack: " + loopBack + "\n siteLocal: " + siteLocal
+				+ "\n multiCast: " + multiCast + "\n mcGlobal: " + mcGlobal + "\n mcLinkLocal: " + mcLinkLocal
+				+ "\n mcNodeLocal: " + mcNodeLocal + "\n mcSiteLocal: " + mcSiteLocal;
 	}
+//	public String toString() {
+//		return new StringBuffer("\n Host Name: ").append(hostName).append("\n Host Address: ").append(hostAddr).append("\n FQDN: ").append(FQDN).append("\n Wild Card: ").append(wildCard).append("\n Link Local").append(linkLocal).append("\n Loopback: ").append(loopBack).append("\n Site Local: ").append(siteLocal).toString();
+//	}
+	
+//	public String toString() {
+//        return new StringBuffer(" First Name: ").append(this.first_name)
+//                .append(" Last Name : ").append(this.last_name).append(" Age : ").append(this.age).toString();
+//    }
+
+//	public String toString() {
+//		return "DeviceDetails [hostName=" + hostName + ", hostAddr=" + hostAddr + "]";
+//	}
 
 }// end class
